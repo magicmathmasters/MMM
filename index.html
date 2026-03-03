@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Magic Math Master | Premium Maths Tutoring in Australia</title>
+  <meta name="description" content="Calm, structured maths tutoring for Prep to Year 12 in Australia. Build confidence step by step with personalised learning and clear family communication.">
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/">
+
+  <meta property="og:title" content="Magic Math Master | Premium Maths Tutoring in Australia">
+  <meta property="og:description" content="Calm, structured tutoring for Prep–Year 12. Personalised learning plans and confidence-first teaching.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <style>
+    .brand-title span{ display:none !important; }
+
+    details.acc{
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      margin: 0 0 12px;
+      overflow:hidden;
+      scroll-margin-top: 180px;
+    }
+    summary.acc-sum{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 16px;
+      font-weight: 1000;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      user-select:none;
+    }
+    summary.acc-sum::-webkit-details-marker{ display:none; }
+    .caret{ font-weight: 1000; opacity:.85; transition: transform .12s ease; }
+    details[open] summary .caret{ transform: rotate(180deg); }
+    .acc-body{ padding: 0 16px 16px; }
+
+    .h2-center{
+      margin: 14px 0 8px;
+      text-align:center;
+      font-size: 24px;
+      font-weight: 1000;
+      letter-spacing: -0.3px;
+      color: var(--brand2);
+    }
+    .sub-center{
+      margin: 0 0 14px;
+      text-align:center;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .two-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .two-grid{ grid-template-columns: 1fr; }
+    }
+
+    .mini-card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .mini-card h3{
+      margin: 0 0 8px;
+      color: #7a4a00;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+    .mini-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.7;
+    }
+
+    .link-strong{
+      color: var(--brand2);
+      font-weight: 1000;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .link-strong:hover{ border-bottom-color: rgba(11,94,215,.60); }
+
+    .diff-wrap{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .diff-head{
+      text-align:center;
+      padding: 8px 6px 6px;
+    }
+    .diff-title{
+      margin: 0 0 8px;
+      font-size: 34px;
+      font-weight: 1100;
+      letter-spacing: -0.4px;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      line-height: 1.15;
+    }
+    .diff-title .spark{
+      font-size: 22px;
+      line-height: 1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(245,158,11,.15);
+      border: 1px solid rgba(245,158,11,.28);
+    }
+    .diff-sub{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .diff-note{
+      margin: 14px auto 16px;
+      max-width: 980px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.22);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .diff-note strong{
+      color: var(--brand2);
+      font-weight: 1100;
+    }
+    .diff-note .note-text{
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.55;
+      flex: 1 1 520px;
+      min-width: 240px;
+    }
+    .diff-note .note-link{
+      white-space: nowrap;
+      font-weight: 1100;
+      text-decoration:none;
+      color: var(--brand2);
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .diff-note .note-link:hover{
+      border-bottom-color: rgba(11,94,215,.60);
+    }
+
+    .diff-grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 1100px){
+      .diff-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px){
+      .diff-grid{ grid-template-columns: 1fr; }
+      .diff-title{ font-size: 28px; }
+    }
+
+    .diff-card{
+      background: rgba(255, 248, 231, .92);
+      border: 1px solid rgba(245,158,11,.30);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .06);
+      min-height: 170px;
+    }
+    .diff-card .diff-top{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .diff-ico{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(245,158,11,.30);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 22px;
+      flex: 0 0 42px;
+    }
+    .diff-card h3{
+      margin: 0;
+      color: #cc7a00;
+      font-size: 18px;
+      font-weight: 1100;
+      line-height: 1.15;
+    }
+    .diff-card p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .club-summary-wrap{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(11,94,215,.14);
+      border-radius: 24px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow2);
+    }
+    .club-badge{
+      display: table;
+      margin: 0 auto 16px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(245,158,11,.12);
+      border: 2px solid rgba(245,158,11,.45);
+      color: #6b4b00;
+      font-weight: 1000;
+      font-size: 16px;
+    }
+    .club-summary-title{
+      margin: 0 0 10px;
+      text-align: center;
+      color: var(--brand2);
+      font-size: 28px;
+      font-weight: 1100;
+    }
+    .club-summary-desc{
+      margin: 0 auto 18px;
+      max-width: 980px;
+      text-align: center;
+      color: #334155;
+      font-weight: 650;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    .club-summary-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+    .club-summary-pill{
+      background: #eef3fb;
+      border: 1px solid rgba(11,94,215,.16);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: #1f2937;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+    .club-summary-pill strong{
+      font-weight: 1000;
+      color: #111827;
+    }
+    .club-summary-cta{
+      margin: 18px 0 0;
+      text-align: center;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+      font-weight:700;
+    }
+    .footer-links a{
+      text-decoration:none;
+      color:inherit;
+      opacity:.9;
+    }
+    .footer-links a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
+
+    @media (max-width: 900px){
+      .club-summary-grid{ grid-template-columns: 1fr; }
+      .club-summary-title{ font-size: 24px; }
+      .club-summary-desc{ font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <!--<a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo">
+        <div class="brand-title">
+         <b>Magic Math Master</b>
+          <span>Premium tutoring • Australia</span>
+        </div>
+      </a>-->
+
+      <div class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="mathclub.html">Math Club</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="about.html">About</a>
+
+        <a href="https://practice.magicmathmaster.com.au">Student Login</a>
+
+        <div class="lang-menu">
+          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="lang-btn-text" id="currentLangText">En</span>
+            <span class="lang-btn-caret">▾</span>
+          </button>
+
+          <div class="lang-dropdown" id="langDropdown" hidden>
+            <button class="lang-option" type="button" data-lang="en" data-label="En">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#012169"/>
+                <polygon points="0,0 7,0 60,33 60,40 53,40 0,7" fill="#fff"/>
+                <polygon points="60,0 53,0 0,33 0,40 7,40 60,7" fill="#fff"/>
+                <polygon points="0,0 3.5,0 60,35 60,40 56.5,40 0,5" fill="#C8102E"/>
+                <polygon points="60,0 56.5,0 0,35 0,40 3.5,40 60,5" fill="#C8102E"/>
+                <rect x="24" width="12" height="40" fill="#fff"/>
+                <rect y="14" width="60" height="12" fill="#fff"/>
+                <rect x="26" width="8" height="40" fill="#C8102E"/>
+                <rect y="16" width="60" height="8" fill="#C8102E"/>
+              </svg>
+              <span class="lang-label">En</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#DA251D"/>
+                <polygon fill="#FFDE00" points="30,8 33.5,18.5 44.5,18.5 35.5,24.8 39,35 30,28.7 21,35 24.5,24.8 15.5,18.5 26.5,18.5"/>
+              </svg>
+              <span class="lang-label">Vn</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#DE2910"/>
+                <polygon fill="#FFDE00" points="12,6 13.8,11.3 19.4,11.3 14.9,14.6 16.6,20 12,16.7 7.4,20 9.1,14.6 4.6,11.3 10.2,11.3"/>
+                <polygon fill="#FFDE00" points="24,4 24.7,6.1 27,6.1 25.1,7.4 25.8,9.6 24,8.2 22.2,9.6 22.9,7.4 21,6.1 23.3,6.1"/>
+                <polygon fill="#FFDE00" points="29,9 29.7,11.1 32,11.1 30.1,12.4 30.8,14.6 29,13.2 27.2,14.6 27.9,12.4 26,11.1 28.3,11.1"/>
+                <polygon fill="#FFDE00" points="29,17 29.7,19.1 32,19.1 30.1,20.4 30.8,22.6 29,21.2 27.2,22.6 27.9,20.4 26,19.1 28.3,19.1"/>
+                <polygon fill="#FFDE00" points="24,22 24.7,24.1 27,24.1 25.1,25.4 25.8,27.6 24,26.2 22.2,27.6 22.9,25.4 21,24.1 23.3,24.1"/>
+              </svg>
+              <span class="lang-label">Zh</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="hi" data-label="Hi">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="13.333" y="0" fill="#FF9933"/>
+                <rect width="60" height="13.333" y="13.333" fill="#FFFFFF"/>
+                <rect width="60" height="13.334" y="26.666" fill="#138808"/>
+                <circle cx="30" cy="20" r="4.2" fill="none" stroke="#000080" stroke-width="1"/>
+                <circle cx="30" cy="20" r="0.6" fill="#000080"/>
+              </svg>
+              <span class="lang-label">Hi</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="es" data-label="Es">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#AA151B"/>
+                <rect y="10" width="60" height="20" fill="#F1BF00"/>
+              </svg>
+              <span class="lang-label">Es</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+        <div class="hero-snap-grid hero-snap-grid-split">
+          <div class="hero-snap-copy">
+            <h1 class="hero-snap-title">MAGIC MATH MASTER</h1>
+            <div class="hero-snap-tagline">Where Learning Maths Becomes Magical</div>
+
+            <p class="hero-snap-desc hero-snap-desc-left">
+              Calm, structured maths tutoring for students from <b>Prep to Year 12</b> — building confidence step by step.
+              Available <b>online across Australia</b> and <b>in-person</b> (where available).
+            </p>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-label="Magic Math Master logo">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="hero-snap-full">
+          <div class="hero-snap-checks">
+            <span>✓ Qualified educator</span>
+            <span>✓ Personalised learning plan</span>
+            <span>✓ Clear communication with families</span>
+          </div>
+
+          <div class="hero-snap-pills">
+            <span class="hero-snap-pill">Online &amp; in-person</span>
+            <span class="hero-snap-pill">Personalised plans</span>
+            <span class="hero-snap-pill">NAPLAN · School exams · Extension</span>
+          </div>
+
+          <div class="hero-snap-cta">
+            <a class="btn btn-red" href="#sec_freedemo">Free Demo</a>
+            <a class="btn btn-success" href="enquiry.html">Enquire</a>
+            <a class="btn btn-amber" href="register.html">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container"><div class="sep"></div></div>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="quicklinks">
+          <h2>Quick links (tap to open)</h2>
+          <div class="ql-grid">
+            <a class="ql-btn" data-open="sec_freedemo">Free Demo</a>
+            <a class="ql-btn" data-open="sec_mathclub">Math Club</a>
+            <a class="ql-btn" data-open="sec_programs">Programs</a>
+            <a class="ql-btn" data-open="sec_pricing">Fees</a>
+            <a class="ql-btn" data-open="sec_about">About</a>
+            <a class="ql-btn" data-open="sec_philosophy">Philosophy</a>
+            <a class="ql-btn" data-open="sec_diff">What makes us different</a>
+            <a class="ql-btn" data-open="sec_why">Why parents choose us</a>
+          </div>
+        </div>
+
+        <details class="acc" id="sec_freedemo" open>
+          <summary class="acc-sum">Free Demo Tests (Prep–Grade 12) <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <a class="btn" href="demo/index.html" target="_blank" rel="noopener">
+              Explore Free Demo Tests
+            </a>
+
+            <p class="sub-center">
+              Give your child a chance to try a short maths demo before registering.
+              Our free demo tests are public and designed to help families explore the platform with confidence.
+              Choose the demo that best matches your child’s year level: Prep–Grade 2, Grade 3–6, Grade 7–10, or Grade 11–12.
+              Full practice tests, adaptive levels, and additional learning materials are available to members after registration.
+            </p>
+
+            <div class="mini-card">
+              <h3>✅ What’s included</h3>
+              <ul>
+                <li>Short demo tests ideal for first-time users</li>
+                <li>Instant feedback to support learning</li>
+                <li>Separate demo options for different year-level groups</li>
+                <li>Sample maths questions across a variety of topics</li>
+              </ul>
+
+              <p style="margin:12px 0 0; font-weight:1000; text-align:center;">
+                👉 <a class="link-strong" href="demo/">Open Free Demo Tests →</a>
+              </p>
+
+              <p style="margin:10px 0 0; color: var(--muted); font-weight: 700; text-align:center;">
+                Looking for full access to the practice portal with adaptive levels and more topics?
+                <a class="link-strong" href="register.html">Register here →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_mathclub" open>
+          <summary class="acc-sum">Maths Club <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="club-summary-wrap">
+              <div class="club-badge">Recommended for all kids</div>
+
+              <h2 class="club-summary-title">🌈 Maths Club</h2>
+
+              <p class="club-summary-desc">
+                A fun, structured program that builds confidence and problem-solving for every level —
+                perfect for kids who want to enjoy maths, not fear it.
+              </p>
+
+              <div class="club-summary-grid">
+                <div class="club-summary-pill">
+                  <strong>Weekly practice</strong> with clear solutions and gentle guidance
+                </div>
+                <div class="club-summary-pill">
+                  <strong>Reasoning &amp; thinking skills</strong> — not just “plug in formulas”
+                </div>
+                <div class="club-summary-pill">
+                  <strong>Optional monthly challenges</strong> to spark curiosity and persistence
+                </div>
+                <div class="club-summary-pill">
+                  <strong>Flexible online</strong> — easy to join from home
+                </div>
+              </div>
+
+              <p class="club-summary-cta">
+                <a class="btn btn-primary" href="mathclub.html">See Maths Club details →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_programs" open>
+          <summary class="acc-sum">Programs <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Programs (overview)</div>
+            <p class="sub-center">Full details are on the Programs page. Here’s a quick overview.</p>
+
+            <div class="two-grid">
+              <div class="mini-card">
+                <h3>🌱 Primary (Prep–Year 6)</h3>
+                <ul>
+                  <li>Number sense, fluency, and confidence</li>
+                  <li>Fractions/decimals/percentages made clear</li>
+                  <li>Word-problem strategies</li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3>🧩 Secondary (Year 7–10)</h3>
+                <ul>
+                  <li>Algebra + core skills aligned to school topics</li>
+                  <li>Geometry and trigonometry foundations</li>
+                  <li>Assessment and revision planning</li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3>🏆 Exam &amp; Extension</h3>
+                <ul>
+                  <li>NAPLAN support + exam technique</li>
+                  <li>Reduce careless mistakes</li>
+                  <li>Challenge for advanced learners</li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3>👩‍🏫 One-to-One or Group</h3>
+                <ul>
+                  <li>Personalised lessons or small group tutorials</li>
+                  <li>Confidence and communication</li>
+                  <li>Support + extension</li>
+                </ul>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="programs.html">Read full program details →</a>
+            </p>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_pricing" open>
+          <summary class="acc-sum">Fees <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Fees (summary)</div>
+            <div class="mini-card">
+              <h3>Transparent pricing</h3>
+              <ul>
+                <li>Clear fee tiers for Primary, Secondary, and Extension.</li>
+                <li>Term bookings may have discounts (optional).</li>
+                <li>Online and in-person options (where available).</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="pricing.html">See full fees &amp; options →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_about" open>
+          <summary class="acc-sum">About <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">About (overview)</div>
+            <div class="mini-card">
+              <h3>Educator-led, confidence-first</h3>
+              <ul>
+                <li>Founded by <b>Dr Tuyet Vu</b>.</li>
+                <li>Calm teaching that builds deep understanding — not stress.</li>
+                <li>Clear communication with families and structured learning plans.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="about.html">Read the full About page →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_philosophy" open>
+          <summary class="acc-sum">Philosophy <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Our philosophy (summary)</div>
+            <div class="mini-card">
+              <h3>Maths for life — not just tests</h3>
+              <ul>
+                <li><b>Strong foundations first</b> so students feel confident.</li>
+                <li><b>Meaningful contexts</b> (money, games, sport, science) to make maths stick.</li>
+                <li><b>Real problem-solving</b> — students learn strategies, not just steps.</li>
+                <li><b>Growth mindset</b> — mistakes are part of learning.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="philosophy.html">Read the full Philosophy page →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="sec_diff" open>
+          <summary class="acc-sum">What makes us different <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+
+            <div class="diff-wrap">
+              <div class="diff-head">
+                <h2 class="diff-title"><span class="spark">✨</span> What makes us different</h2>
+                <p class="diff-sub">Supportive, structured, and personalised maths learning — with clear communication for families.</p>
+              </div>
+
+              <div class="diff-note" role="note" aria-label="Good to know">
+                <div class="note-text">
+                  <strong>Good to know:</strong>
+                  Lessons are prepaid · 24-hour notice for changes · Respectful, supportive learning environment.
+                </div>
+                <a class="note-link" href="policies.html">View full policy</a>
+              </div>
+
+              <div class="diff-grid">
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🎓</div>
+                    <h3>Qualified educator-led</h3>
+                  </div>
+                  <p>Lessons are designed and delivered with strong academic expertise and a deep understanding of how students think and learn.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🎯</div>
+                    <h3>Personalised, not generic</h3>
+                  </div>
+                  <p>Every child learns differently. We adjust pace, explanations, and strategies to suit each student — not a one-size-fits-all approach.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">👨‍👩‍👧‍👦</div>
+                    <h3>Clear communication</h3>
+                  </div>
+                  <p>Parents are kept informed about progress, challenges, and next steps — so there are no surprises.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🧠</div>
+                    <h3>Confidence before speed</h3>
+                  </div>
+                  <p>We prioritise understanding and confidence. Speed develops naturally once concepts are truly understood.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🌱</div>
+                    <h3>Safe &amp; encouraging</h3>
+                  </div>
+                  <p>Mistakes are part of learning, not something to fear. Students are supported to ask questions and grow with confidence.</p>
+                </div>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="enquiry.html">Send an enquiry to get a recommended starting plan →</a>
+            </p>
+
+          </div>
+        </details>
+
+        <details class="acc" id="sec_why" open>
+          <summary class="acc-sum">Why parents choose us <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Why parents choose Magic Math Master</div>
+
+            <div class="grid">
+              <div class="card">
+                <h3>Clear, calm teaching</h3>
+                <p>Step-by-step explanations so students feel safe to ask questions and learn from mistakes.</p>
+              </div>
+              <div class="card">
+                <h3>Real progress you can see</h3>
+                <p>Targeted practice + feedback helps students build accuracy, speed, and confidence over time.</p>
+              </div>
+              <div class="card">
+                <h3>Family communication</h3>
+                <p>Parents stay informed about goals, learning focus, and what to practise next.</p>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="enquiry.html">Send an enquiry to get a recommended starting plan →</a>
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Magic Math Master • Australia</div>
+        <div>
+          <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
+          <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="policies.html">Policies</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function(){
+      function isMobileLike(){ return window.matchMedia("(max-width: 900px)").matches; }
+
+      function setAllDetails(open){
+        document.querySelectorAll("details.acc").forEach(function(d){
+          if(open) d.setAttribute("open","");
+          else d.removeAttribute("open");
+        });
+      }
+
+      function scrollToSection(el){
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
+
+        var tries = 0;
+        var maxTries = 9;
+
+        function nudge(){
+          tries++;
+          var rect = el.getBoundingClientRect();
+          var safeTop = 150;
+          if(rect.top < safeTop){
+            window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
+          }
+          if(tries < maxTries) setTimeout(nudge, 160);
+        }
+        setTimeout(nudge, 220);
+      }
+
+      function openAndScroll(targetId){
+        if(targetId === "sec_all"){
+          setAllDetails(true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        var el = document.getElementById(targetId);
+        if(!el) return;
+
+        if(isMobileLike()) setAllDetails(false);
+        el.setAttribute("open","");
+
+        setTimeout(function(){ scrollToSection(el); }, 60);
+      }
+
+      document.querySelectorAll(".ql-btn[data-open]").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          openAndScroll(btn.getAttribute("data-open"));
+        });
+      });
+    })();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
