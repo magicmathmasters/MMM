@@ -1,0 +1,47 @@
+<div class="topbar">
+  <div class="container topbar-inner">
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a data-nav href="{{ '/index.html' | relative_url }}">Home</a>
+      <a data-nav href="{{ '/mathclub.html' | relative_url }}">Math Club</a>
+      <a data-nav href="{{ '/programs.html' | relative_url }}">Programs</a>
+      <a data-nav href="{{ '/pricing.html' | relative_url }}">Fees</a>
+      <a data-nav href="{{ '/about.html' | relative_url }}">About</a>
+
+      <a class="nav-external" href="https://practice.magicmathmaster.com.au" target="_blank" rel="noopener">
+        Student Login
+      </a>
+
+      <!-- Language dropdown -->
+      <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-btn-text" id="currentLangText">En</span>
+          <span class="lang-btn-caret">▾</span>
+        </button>
+
+        <div class="lang-dropdown" id="langDropdown" hidden>
+          <button class="lang-option" type="button" data-lang="en" data-label="En">
+            <span class="lang-label">En</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
+            <span class="lang-label">Vn</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
+            <span class="lang-label">Zh</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="hi" data-label="Hi">
+            <span class="lang-label">Hi</span>
+          </button>
+
+          <button class="lang-option" type="button" data-lang="es" data-label="Es">
+            <span class="lang-label">Es</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+</div>
