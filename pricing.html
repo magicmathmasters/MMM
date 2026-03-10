@@ -1,0 +1,705 @@
+---
+layout: default
+title: "Fees | Magic Math Master"
+description: "Transparent maths tutoring fees in Australia. Interactive pricing for Primary, Years 7–10, and VCE. Clear options for standard, extension, selective tests, and AMC/AMO programs."
+canonical: "https://www.magicmathmaster.com.au/pricing.html"
+og_title: "Fees | Magic Math Master"
+og_description: "Transparent pricing with flexible options. Interactive fees by year level, VCE subject, and program type."
+og_type: "website"
+og_url: "https://www.magicmathmaster.com.au/pricing.html"
+---
+
+<div class="pricing-page">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+        <div class="hero-snap-grid hero-snap-grid-split">
+          <div class="hero-snap-copy">
+            <h1 class="hero-snap-title">Fees</h1>
+            <div class="hero-snap-tagline">Transparent pricing, structured lessons, and clear expectations</div>
+
+            <p class="hero-snap-desc hero-snap-desc-left">
+              Choose year level and program type to see live pricing. If you’re unsure,
+              we can recommend the best option based on goals and timeline.
+            </p>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="{{ '/assets/logo.png' | relative_url }}" alt="Magic Math Master logo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="hero-snap-full">
+          <div class="hero-snap-checks">
+            <span>✓ Calm, structured teaching</span>
+            <span>✓ Personalised learning</span>
+            <span>✓ Clear family communication</span>
+          </div>
+
+          <div class="hero-snap-pills">
+            <span class="hero-snap-pill">Online &amp; in-person</span>
+            <span class="hero-snap-pill">Primary–VCE</span>
+            <span class="hero-snap-pill">Confidence first</span>
+          </div>
+
+          <div class="hero-snap-cta">
+            <a class="btn btn-success" href="{{ '/enquiry.html' | relative_url }}">Enquire</a>
+            <a class="btn btn-amber" href="{{ '/register.html' | relative_url }}">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="section" id="jump-links">
+      <div class="card pricing-jump-card">
+        <div class="chip-links" role="navigation" aria-label="Jump links">
+          <a class="chip-link" href="#detailed-fees">💲 Detailed fees</a>
+          <a class="chip-link" href="#maths-club-fee">🌈 Maths Club fee</a>
+          <a class="chip-link" href="#discounts-rewards">🎁 Discounts &amp; rewards</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section price-tool" id="detailed-fees">
+      <h2 class="section-title pricing-blue">Interactive fees</h2>
+      <p class="section-sub">
+        Select year level, VCE subject (if relevant), and program type.
+        All prices are <strong>per student</strong>.
+      </p>
+
+      <div class="wrap">
+        <div class="bar">
+
+          <div class="seg" role="tablist" aria-label="Year level selector">
+            <button class="active" data-level="primary" role="tab" aria-selected="true">Primary (Prep–Y6)</button>
+            <button data-level="mid" role="tab" aria-selected="false">Years 7–10</button>
+            <button data-level="vce" role="tab" aria-selected="false">Year 11–12 (VCE)</button>
+          </div>
+
+          <div class="vceBox" id="vceBox" aria-label="VCE subject selector">
+            <div class="title">VCE subject</div>
+            <div class="seg" role="tablist" aria-label="VCE subject">
+              <button class="active" data-vce="general" role="tab" aria-selected="true">General</button>
+              <button data-vce="methods" role="tab" aria-selected="false">Methods</button>
+              <button data-vce="specialist" role="tab" aria-selected="false">Specialist</button>
+            </div>
+            <div class="hint">VCE adds load on top of the base table.</div>
+          </div>
+
+          <div class="vceBox pricing-track-box" id="trackBox" aria-label="Program type selector">
+            <div class="title">Program type</div>
+            <div class="seg" role="tablist" aria-label="Program type">
+              <button class="active" data-track="standard" role="tab" aria-selected="true">Standard</button>
+              <button data-track="extension" role="tab" aria-selected="false">Extension</button>
+              <button data-track="selective" role="tab" aria-selected="false">Selective tests</button>
+              <button data-track="amc" role="tab" aria-selected="false">AMC/AMO</button>
+              <button data-track="amointensive" role="tab" aria-selected="false">AMO Intensive</button>
+            </div>
+            <div class="hint">Program add-ons apply on top of the base table + year level adjustment.</div>
+          </div>
+
+          <div class="note pricing-note-box" id="ruleNote">
+            <div class="badge-row">
+              <span class="badge" id="badgeYear">Primary adjustment</span>
+              <span class="badge" id="badgeTrack">Standard</span>
+              <span class="badge warn" id="minBadge">60-min minimum for 5+ students</span>
+            </div>
+
+            <div>
+              <strong id="ruleLine">
+                Primary Maths: –$5 (30 min) and –$10 (60 min) per student.<br>
+                Standard tutoring: +$0.
+              </strong>
+              <div class="sub" id="extraLine">Tip: 60-minute sessions allow more practice + feedback.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <section class="section" id="fees-glance">
+        <h2 class="section-title pricing-purple">Fees at a glance</h2>
+        <p class="section-sub">
+          These cards update automatically based on your selections above — so they always match the table.
+        </p>
+
+        <div class="price-grid">
+          <div class="price-card" id="glance-online">
+            <div class="price-top">
+              <h3>Online</h3>
+              <span class="kicker" id="glance-badge-online">1-to-1 • 60 min</span>
+            </div>
+
+            <div class="fee-chips">
+              <span class="fee-chip">Clear structure</span>
+              <span class="fee-chip">Flexible</span>
+              <span class="fee-chip">Strong feedback</span>
+            </div>
+
+            <div class="price" id="glance-price-online">$—</div>
+            <div class="per" id="glance-per-online">per 60 minutes (per student)</div>
+
+            <div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> a clear plan + progress feedback and next steps.</div>
+          </div>
+
+          <div class="price-card featured" id="glance-inperson">
+            <div class="price-top">
+              <h3>In-person</h3>
+              <span class="kicker" id="glance-badge-inperson">1-to-1 • 60 min</span>
+            </div>
+
+            <div class="fee-chips">
+              <span class="fee-chip">Hands-on support</span>
+              <span class="fee-chip">Guided practice</span>
+              <span class="fee-chip">Confidence</span>
+            </div>
+
+            <div class="price" id="glance-price-inperson">$—</div>
+            <div class="per" id="glance-per-inperson">per 60 minutes (per student)</div>
+
+            <div class="parents-get">📍 <strong>In-person includes:</strong> travel/setup time (subject to availability).</div>
+          </div>
+
+          <div class="price-card" id="glance-30">
+            <div class="price-top">
+              <h3>Short session</h3>
+              <span class="kicker" id="glance-badge-30">1-to-1 • 30 min</span>
+            </div>
+
+            <div class="fee-chips">
+              <span class="fee-chip" id="glance-30-note">Shown when 30-min is available</span>
+            </div>
+
+            <div class="price pricing-small-price" id="glance-price-30">$—</div>
+            <div class="per" id="glance-per-30">per 30 minutes (online / in-person)</div>
+
+            <div class="parents-get" id="glance-30-helper">
+              Tip: 60 minutes usually gives better progress (more time for practice + feedback).
+            </div>
+          </div>
+
+          <div class="price-card" id="glance-5plus">
+            <div class="price-top">
+              <h3>5+ students</h3>
+              <span class="kicker" id="glance-badge-5plus">5+ • 60 min minimum</span>
+            </div>
+
+            <div class="fee-chips">
+              <span class="fee-chip">Best value</span>
+              <span class="fee-chip">Similar level</span>
+              <span class="fee-chip">Weekly routine</span>
+            </div>
+
+            <div class="price pricing-small-price" id="glance-price-5plus">$—</div>
+            <div class="per" id="glance-per-5plus">per 60 minutes (per student)</div>
+
+            <div class="parents-get" id="glance-5plus-helper">
+              <strong>Note:</strong> 60 minutes minimum for 5+ students to keep lesson quality high.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap">
+        <table aria-label="Tutoring price table" class="fees-table">
+          <colgroup>
+            <col class="pricing-col-icon">
+            <col class="pricing-col-program">
+            <col>
+            <col>
+          </colgroup>
+
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Program</th>
+              <th>30 minutes / student</th>
+              <th>60 minutes / student</th>
+            </tr>
+          </thead>
+          <tbody id="priceBody"></tbody>
+        </table>
+
+        <div class="tool-footer">
+          <strong>Notes:</strong>
+          In-person pricing includes travel/setup. For group sessions, students should be at a similar level.
+          <strong>5+ students:</strong> 60-minute minimum to keep lesson quality high.
+        </div>
+
+        <div class="triple-grid">
+          <div class="info-card">
+            <h3>📘 What’s included</h3>
+            <ul class="pricing-list">
+              <li>Personalised learning plan and goals</li>
+              <li>Targeted feedback and clear next steps</li>
+              <li>Lessons aligned to your child’s needs and timeline</li>
+            </ul>
+            <div class="parents-get pricing-top-gap">
+              <strong>Best for:</strong> families who want structure + visible progress.
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>🌈 Confidence + consistency</h3>
+            <div class="quote-box">
+              Progress comes from <b>clear teaching + consistent practice</b> — not stress.
+              We keep sessions calm, structured, and supportive.
+            </div>
+            <div class="parents-get">
+              <strong>Result:</strong> students understand, practise, and feel more confident week by week.
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>✅ Good to know</h3>
+            <div class="notes-box">
+              <ul class="pricing-list">
+                <li>Online and in-person options (depending on availability).</li>
+                <li>Small groups can be the best value for steady weekly learning.</li>
+                <li>Ask us to recommend the best pathway (catch up / keep up / get ahead).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="imp-box" aria-label="Important information">
+      <div class="imp-head">
+        <div class="imp-pin">📌</div>
+        <h2 class="imp-title">Important Information (Short Summary)</h2>
+      </div>
+
+      <ul class="imp-list">
+        <li><b>Payment:</b> Fees are paid before lessons.</li>
+        <li><b>Cancellations:</b> Please provide at least <b>24 hours’ notice</b> to cancel or change a lesson. Late cancellations may still be charged.</li>
+        <li><b>Refunds:</b> Refunds may be available for lessons cancelled with <b>24+ hours’ notice</b> or with a valid medical certificate.</li>
+        <li><b>Behaviour:</b> Students are expected to be kind, respectful, and positive so everyone can learn comfortably.</li>
+        <li><b>Communication:</b> We keep families updated, and parents are welcome to contact <b>Dr Tuyet Vu</b> with any questions.</li>
+      </ul>
+
+      <p class="imp-footer">
+        For full details, please read our
+        <a class="imp-link" href="{{ '/policies.html' | relative_url }}">Policies</a>.
+      </p>
+    </section>
+
+    <section class="club-section section" id="maths-club-fee">
+      <h2 class="section-title pricing-green pricing-center">🌈 Maths Club fee</h2>
+      <p class="club-sub">
+        For students <b>not currently enrolled in tutoring</b> who want weekly enrichment, structured practice, and ongoing maths support.<br>
+        <em>Senior Maths Club includes higher-level review and practice up to Year 12.</em>
+      </p>
+
+      <div class="club-grid">
+        <div class="club-card">
+          <h3>✨ Primary students</h3>
+          <p class="price-lines">
+            $7 / week<br>
+            $28 / month<br>
+            <span>$250 / year</span> <span class="best-value">Best value</span>
+          </p>
+          <p class="pricing-small-copy">
+            Best for students building confidence, fluency, and strong foundations.
+          </p>
+        </div>
+
+        <div class="club-card">
+          <h3>✨ Years 7–10 students</h3>
+          <p class="price-lines">
+            $10 / week<br>
+            $40 / month<br>
+            <span>$350 / year</span> <span class="best-value">Best value</span>
+          </p>
+          <p class="pricing-small-copy">
+            Best for steady skill building, problem solving, and regular weekly practice.
+          </p>
+        </div>
+
+        <div class="club-card">
+          <h3>🎓 Senior Maths Club (Year 11–12)</h3>
+          <p class="price-lines">
+            $13 / week<br>
+            $50 / month<br>
+            <span>$450 / year</span> <span class="best-value">Best value</span>
+          </p>
+          <p class="pricing-small-copy">
+            Best for structured revision, exam-style practice, and review materials up to Year 12 level.
+          </p>
+        </div>
+      </div>
+
+      <div class="btn-row pricing-top-gap">
+        <a class="btn btn-success" href="{{ '/enquiry.html?program=maths-club' | relative_url }}">Ask about Maths Club</a>
+        <a class="btn btn-amber" href="{{ '/club-register.html' | relative_url }}">Register for Maths Club</a>
+        <a class="btn btn-amber" href="{{ '/mathclub.html' | relative_url }}">Maths Club details</a>
+      </div>
+    </section>
+
+    <section class="discounts-section section" id="discounts-rewards">
+      <h2 class="section-title pricing-amber pricing-center">🎁 Discounts &amp; rewards</h2>
+      <p class="discounts-subtitle">
+        We aim to support families and recognise students’ effort, progress, and growth.
+      </p>
+
+      <div class="discounts-row">
+        <div class="discount-card">
+          <h3>💛 1. Block Booking Discount (Tutoring)</h3>
+          <p>
+            A <b>10% discount</b> applies when you book a block of <b>10 or more tutoring lessons</b> and pay in advance.
+          </p>
+          <ul class="pricing-list">
+            <li>Available for one-to-one and group lessons.</li>
+            <li>Helps families plan ahead and reduce overall costs.</li>
+          </ul>
+        </div>
+
+        <div class="discount-card">
+          <h3>👨‍👩‍👧‍👦 2. Family Discounts</h3>
+          <p>To support families with more than one child learning with us:</p>
+          <ul class="pricing-list">
+            <li><b>Second child:</b> 10% discount</li>
+            <li><b>Third child:</b> 20% discount</li>
+          </ul>
+
+          <div class="example-box">
+            <strong>Example – 3 children</strong><br><br>
+            Child A: highest fee → no family discount<br>
+            Child B: middle fee → 10% off<br>
+            Child C: lowest fee → 20% off<br><br>
+            Max discount per child per period: <strong>20%</strong>.
+          </div>
+        </div>
+
+        <div class="discount-card">
+          <h3>💬 3. Support for Families</h3>
+          <p>
+            If your budget is limited, please contact us — we may be able to match students into small groups or suggest options.
+          </p>
+          <ul class="pricing-list">
+            <li>Small groups can reduce cost while keeping quality high.</li>
+            <li>We can recommend the most efficient plan for your goals.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="discount-card-wide">
+        <h3>🏅 4. Progress &amp; Achievement Rewards</h3>
+        <p>Students may receive up to <b>10% discount</b> on the next billing period’s tuition fees.</p>
+        <ul class="pricing-list">
+          <li><b>Maintaining high performance – 5%</b>: consistently strong results.</li>
+          <li><b>Improving school grades – 5%</b>: visible improvement (e.g., C→B, B→A).</li>
+          <li><b>Showing steady progress – 5%</b>: confidence, accuracy, reasoning, engagement.</li>
+        </ul>
+        <p class="pricing-no-margin">If multiple criteria are met, the reward is capped at <b>10%</b>.</p>
+      </div>
+
+      <div class="discount-card-green">
+        <h3>🔎 5. How Discounts Are Applied</h3>
+        <ul class="pricing-list pricing-no-margin">
+          <li>Only one type of discount applies per child per billing period.</li>
+          <li>If multiple discounts apply, the <b>highest</b> one is used.</li>
+          <li>The maximum discount per child is <b>20%</b> per billing cycle.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="policies-summary">
+      <div class="card">
+        <h2 class="section-title pricing-sky pricing-no-top">Policies summary</h2>
+        <ul class="policy-list">
+          <li>Lessons are prepaid and scheduled in advance.</li>
+          <li>Please provide at least <strong>24 hours’ notice</strong> for cancellations or changes.</li>
+          <li>We maintain a respectful, supportive learning environment.</li>
+        </ul>
+        <p class="section-sub pricing-top-gap-small">
+          For full details, please read our <a href="{{ '/policies.html' | relative_url }}">Policies</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="cta-bottom">
+      <div class="card pricing-cta-card">
+        <h2 class="section-title pricing-blue pricing-no-top">Not sure which option fits your child best?</h2>
+        <p class="section-sub pricing-no-margin-bottom">
+          Tell us year level + goal (catch up / keep up / get ahead). We’ll recommend the best starting point.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn btn-success" href="{{ '/enquiry.html' | relative_url }}">Enquire</a>
+          <a class="btn btn-amber" href="{{ '/register.html' | relative_url }}">Register</a>
+          <a class="btn btn-amber" href="{{ '/programs.html' | relative_url }}">Back to Programs</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const rows = [
+    { icon:"👩‍🏫", program:"One-to-One",
+      p30:{ online:55, inperson:60 }, p60:{ online:100, inperson:110 } },
+    { icon:"👩‍👦", program:"2 students",
+      p30:{ online:45, inperson:50 }, p60:{ online:80,  inperson:90  } },
+    { icon:"👨‍👩‍👧", program:"3 students",
+      p30:{ online:35, inperson:40 }, p60:{ online:60,  inperson:70  } },
+    { icon:"👨‍👩‍👧‍👦", program:"4 students",
+      p30:{ online:30, inperson:35 }, p60:{ online:50,  inperson:60  } },
+    { icon:"👨‍👩‍👧‍👦🧑", program:"5 students",
+      p30:{ online:25, inperson:30 }, p60:{ online:40,  inperson:50  }, min60:true },
+    { icon:"👨‍👩‍👧‍👦🧑+", program:"5+ students",
+      p30:{ online:20, inperson:25 }, p60:{ online:35,  inperson:45  }, min60:true },
+  ];
+
+  const adjustments = {
+    primary: {
+      add30:-5, add60:-10,
+      badge:"Primary adjustment",
+      rule:"Primary Maths: –$5 (30 min) and –$10 (60 min) per student.",
+      extra:"Tip: If your child needs enrichment or extension, ask about a tailored plan."
+    },
+    mid: {
+      add30:0, add60:0,
+      badge:"Standard pricing",
+      rule:"Years 7–10 Maths: standard pricing (no adjustment).",
+      extra:"Tip: 60-minute sessions allow more practice + feedback."
+    },
+    vce: { extra:"For VCE Maths, 60-minute sessions are strongly recommended." }
+  };
+
+  const vceSubjects = {
+    general:    { add30:+10, add60:+15, label:"VCE General Maths: +$10 (30) and +$15 (60) per student." },
+    methods:    { add30:+15, add60:+20, label:"VCE Maths Methods: +$15 (30) and +$20 (60) per student." },
+    specialist: { add30:+20, add60:+25, label:"VCE Specialist Maths: +$20 (30) and +$25 (60) per student." },
+  };
+
+  const tracks = {
+    standard:  { add30: 0,  add60: 0,  name:"Standard",
+                 label:"Standard tutoring: +$0.", min60:false,
+                 extra:"Focus: school learning, homework support, confidence building."},
+
+    extension: { add30:+5,  add60:+10, name:"Extension",
+                 label:"Extension: +$5 (30) and +$10 (60) per student.", min60:false,
+                 extra:"Focus: enrichment, deeper understanding, higher-level questions."},
+
+    selective: { add30:+10, add60:+20, name:"Selective tests",
+                 label:"Selective tests: +$10 (30) and +$20 (60) per student.", min60:true,
+                 extra:"Focus: test technique, speed, reasoning, practice papers."},
+
+    amc:       { add30:+15, add60:+25, name:"AMC/AMO",
+                 label:"AMC/AMO: +$15 (30) and +$25 (60) per student.", min60:true,
+                 extra:"Focus: competition problem solving, strategies, advanced reasoning."},
+
+    amointensive: { add30:+20, add60:+30, name:"AMO Intensive",
+                    label:"AMO Intensive: +$20 (30) and +$30 (60) per student.", min60:true,
+                    extra:"Focus: advanced Olympiad training, proofs, and high-difficulty problem sets."},
+  };
+
+  let currentLevel = "primary";
+  let currentVce = "general";
+  let currentTrack = "standard";
+
+  const money = n => `$${Math.max(0, n)}`;
+
+  function yearAdj(){
+    if (currentLevel === "vce") return vceSubjects[currentVce];
+    return adjustments[currentLevel];
+  }
+
+  function totalAdd30(){
+    const y = yearAdj();
+    const t = tracks[currentTrack];
+    return (y.add30 || 0) + (t.add30 || 0);
+  }
+
+  function totalAdd60(){
+    const y = yearAdj();
+    const t = tracks[currentTrack];
+    return (y.add60 || 0) + (t.add60 || 0);
+  }
+
+  function priceCells(online, inperson){
+    return `
+      <div class="cells">
+        <div class="pricebox">
+          <div class="price">${money(online)}</div>
+          <div class="tag online">🌐 Online</div>
+        </div>
+        <div class="pricebox">
+          <div class="price">${money(inperson)}</div>
+          <div class="tag inperson">📍 In-person</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function selectionLabel(){
+    const yearLabel =
+      currentLevel === "primary" ? "Primary" :
+      currentLevel === "mid" ? "Years 7–10" :
+      `VCE ${currentVce.charAt(0).toUpperCase() + currentVce.slice(1)}`;
+
+    const trackLabel = tracks[currentTrack].name;
+    return `${yearLabel} • ${trackLabel}`;
+  }
+
+  function updateFeesAtGlance(){
+    const add30 = totalAdd30();
+    const add60 = totalAdd60();
+
+    const oneToOne = rows[0];
+    const force60_1to1 = !!oneToOne.min60 || tracks[currentTrack].min60;
+
+    const online60 = oneToOne.p60.online + add60;
+    const inperson60 = oneToOne.p60.inperson + add60;
+
+    document.getElementById("glance-price-online").textContent = `$${online60}`;
+    document.getElementById("glance-price-inperson").textContent = `$${inperson60}`;
+
+    const label = selectionLabel();
+    document.getElementById("glance-badge-online").textContent = `1-to-1 • 60 min • ${label}`;
+    document.getElementById("glance-badge-inperson").textContent = `1-to-1 • 60 min • ${label}`;
+    document.getElementById("glance-badge-30").textContent = `1-to-1 • 30 min • ${label}`;
+
+    const glance30Price  = document.getElementById("glance-price-30");
+    const glance30Note   = document.getElementById("glance-30-note");
+    const glance30Helper = document.getElementById("glance-30-helper");
+
+    if (force60_1to1){
+      glance30Price.textContent = "60-min required";
+      glance30Note.textContent = "This selection requires 60-minute sessions for quality/results.";
+      glance30Helper.innerHTML = `<strong>Why?</strong> These programs need time for strategy + deep practice + feedback.`;
+    } else {
+      const online30 = oneToOne.p30.online + add30;
+      const inperson30 = oneToOne.p30.inperson + add30;
+      glance30Price.textContent = `$${online30} / $${inperson30}`;
+      glance30Note.textContent = "Online / In-person (per student)";
+      glance30Helper.textContent = "Tip: 60 minutes usually gives better progress (more time for practice + feedback).";
+    }
+
+    const fivePlus = rows[5];
+    const online60_5p = fivePlus.p60.online + add60;
+    const inperson60_5p = fivePlus.p60.inperson + add60;
+
+    document.getElementById("glance-badge-5plus").textContent = `5+ students • 60 min • ${label}`;
+    document.getElementById("glance-price-5plus").textContent = `$${online60_5p} / $${inperson60_5p}`;
+    document.getElementById("glance-per-5plus").textContent = "per 60 minutes (online / in-person • per student)";
+  }
+
+  function render(){
+    const badgeYear = document.getElementById("badgeYear");
+    const badgeTrack = document.getElementById("badgeTrack");
+    const ruleLine = document.getElementById("ruleLine");
+    const extraLine = document.getElementById("extraLine");
+    const vceBox = document.getElementById("vceBox");
+
+    const y = yearAdj();
+    const t = tracks[currentTrack];
+
+    if (currentLevel === "vce") {
+      vceBox.style.display = "block";
+      badgeYear.textContent = "VCE subject";
+    } else {
+      vceBox.style.display = "none";
+      badgeYear.textContent = adjustments[currentLevel].badge;
+    }
+
+    badgeTrack.textContent = t.name;
+
+    const yearText = (currentLevel === "vce") ? y.label : adjustments[currentLevel].rule;
+    ruleLine.innerHTML = `${yearText}<br>${t.label}`;
+    extraLine.textContent =
+      (currentLevel === "vce" ? adjustments.vce.extra : adjustments[currentLevel].extra) +
+      " " + t.extra;
+
+    const add30 = totalAdd30();
+    const add60 = totalAdd60();
+
+    const tbody = document.getElementById("priceBody");
+    tbody.innerHTML = "";
+
+    rows.forEach((r) => {
+      const tr = document.createElement("tr");
+
+      const tdIcon = document.createElement("td");
+      tdIcon.className = "icon";
+      tdIcon.textContent = r.icon;
+
+      const tdProg = document.createElement("td");
+      tdProg.innerHTML = `<div class="program">${r.program}</div>`;
+
+      const td30 = document.createElement("td");
+      const force60 = !!r.min60 || tracks[currentTrack].min60;
+
+      if (force60) {
+        td30.innerHTML = `
+          <div class="locked">
+            <div class="label">60-minute minimum</div>
+            <div class="small">
+              ${r.min60
+                ? "For 5+ students we only offer 60-minute sessions to keep lesson quality high."
+                : "For this program type, 60-minute sessions are required for best results."}
+            </div>
+          </div>
+        `;
+      } else {
+        td30.innerHTML = priceCells(r.p30.online + add30, r.p30.inperson + add30);
+      }
+
+      const td60 = document.createElement("td");
+      td60.innerHTML = priceCells(r.p60.online + add60, r.p60.inperson + add60);
+
+      tr.appendChild(tdIcon);
+      tr.appendChild(tdProg);
+      tr.appendChild(td30);
+      tr.appendChild(td60);
+      tbody.appendChild(tr);
+    });
+
+    updateFeesAtGlance();
+  }
+
+  document.querySelectorAll("[data-level]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentLevel = btn.dataset.level;
+      document.querySelectorAll("[data-level]").forEach(b => {
+        const active = b.dataset.level === currentLevel;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-vce]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentVce = btn.dataset.vce;
+      document.querySelectorAll("[data-vce]").forEach(b => {
+        const active = b.dataset.vce === currentVce;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-track]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentTrack = btn.dataset.track;
+      document.querySelectorAll("[data-track]").forEach(b => {
+        const active = b.dataset.track === currentTrack;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      render();
+    });
+  });
+
+  render();
+</script>
