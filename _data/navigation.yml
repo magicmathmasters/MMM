@@ -1,0 +1,28 @@
+main:
+  - name: Home
+    url: /index.html
+
+  - name: Math Club
+    url: /mathclub.html
+
+  - name: Programs
+    url: /programs.html
+
+  - name: Fees
+    url: /pricing.html
+
+  - name: About
+    url: /about.html
+
+footer:
+  - name: About
+    url: /about.html
+
+  - name: Philosophy
+    url: /philosophy.html
+
+  - name: Policies
+    url: /policies.html
+
+  - name: Contact
+    url: /contact.html

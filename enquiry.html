@@ -1,0 +1,125 @@
+---
+layout: default
+title: "Enquiry | Magic Math Master"
+description: "Send an enquiry to Magic Math Master. Ask questions and we’ll recommend the best next step for your child."
+canonical: "https://www.magicmathmaster.com.au/enquiry.html"
+og_title: "Enquiry | Magic Math Master"
+og_description: "Send an enquiry to Magic Math Master. Ask questions and we’ll recommend the best next step for your child."
+---
+
+<div class="page-enquiry">
+  <div class="container">
+
+    <section class="hero-card" aria-label="Enquiry hero">
+      <img
+        class="hero-banner"
+        src="{{ '/assets/banner.png' | relative_url }}"
+        alt="Magic Math Master banner"
+        loading="eager"
+      />
+      <div class="hero-copy">
+        <h1 class="hero-title">Enquiry</h1>
+        <p class="hero-desc">
+          Send your questions — we’ll reply as soon as possible.<br>
+          Tell us your child’s <strong>year level</strong>, your goal
+          (<strong>catch up / keep up / get ahead</strong>), and any topics you’d like help with.
+        </p>
+
+        <div class="hero-pills">
+          <span class="hero-pill">Clear next steps</span>
+          <span class="hero-pill">Friendly communication</span>
+          <span class="hero-pill">Confidence-first teaching</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-amber" href="{{ '/register.html' | relative_url }}">Register for Tutoring</a>
+          <a class="btn btn-secondary" href="{{ '/club-register.html' | relative_url }}">
+            Maths Club Registration
+            <span class="badge">Club only</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="enquiry-form">
+      <div class="form-card">
+        <div class="form-card-head">
+          <h2 class="form-card-title">Tutoring Enquiry Form</h2>
+        </div>
+
+        <div class="form-card-body">
+          <p class="note">
+            This enquiry form is for <strong>tutoring</strong> (one-to-one, group tutoring, competition training).
+            Maths Club has a separate registration form.
+          </p>
+
+          <iframe
+            name="enquirySubmitFrame"
+            style="display:none;"
+            title="Enquiry submission"
+          ></iframe>
+
+          <form
+            id="enquiryForm"
+            action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec"
+            method="post"
+            target="enquirySubmitFrame"
+            novalidate
+          >
+            <input type="hidden" name="formType" value="tutoring-enquiry" />
+
+            <div class="grid-2">
+              <div>
+                <label for="parent_name">Parent / Guardian Name</label>
+                <input id="parent_name" type="text" name="parent_name" required />
+              </div>
+
+              <div>
+                <label for="student_name">Student Name (optional)</label>
+                <input id="student_name" type="text" name="student_name" />
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required />
+              </div>
+
+              <div>
+                <label for="mobile">Mobile (optional)</label>
+                <input id="mobile" type="tel" name="mobile" />
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Your enquiry</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Tell us what support you’re looking for, preferred lesson type, and any specific topics..."
+              ></textarea>
+            </div>
+
+            <label class="option">
+              <input type="checkbox" name="consent" value="Yes" required />
+              I consent to Magic Math Master contacting me about this enquiry.
+            </label>
+
+            <button type="submit" class="btn btn-amber">Submit enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div id="thankYouModal" role="dialog" aria-modal="true" aria-labelledby="thankYouTitle">
+  <div class="modal-card">
+    <h3 id="thankYouTitle">Thank you!</h3>
+    <p>Your enquiry has been received. We will contact you shortly.</p>
+    <button class="btn btn-amber" type="button" id="thankYouOkBtn">OK</button>
+  </div>
+</div>

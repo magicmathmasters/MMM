@@ -5,9 +5,13 @@
   <body>
     {% include topbar.html %}
 
-    {{ content }}
+    <main>
+      {{ content }}
+    </main>
 
     {% include footer.html %}
-    <script src="/js/script.js"></script>
+
+    <!-- Shared JS -->
+    <script src="{{ '/js/script.js' | relative_url }}"></script>
   </body>
 </html>
