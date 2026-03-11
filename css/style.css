@@ -1,10 +1,9 @@
 /* =========================================================
-   Magic Math Master — cleaned stylesheet
-   Notes:
-   - Duplicate rules removed
-   - Pricing page styles scoped and consolidated
-   - Shared utilities grouped together
-   - Kept existing class names to avoid breaking HTML/JS
+   Magic Math Master — refactored stylesheet
+   Goal:
+   - keep current class names working
+   - reduce duplication
+   - centralize repeated surfaces, pills, buttons, and pricing styles
    ========================================================= */
 
 /* =========================
@@ -13,12 +12,20 @@
 :root {
   --bg: #f7f9fc;
   --paper: #ffffff;
+  --paper-soft: rgba(255, 255, 255, 0.75);
+  --paper-soft-2: rgba(255, 255, 255, 0.82);
+  --paper-strong: rgba(255, 255, 255, 0.92);
   --ink: #0f172a;
   --muted: #475569;
   --line: rgba(15, 23, 42, 0.1);
 
   --brand: #0b5ed7;
   --brand-dark: #0a3d91;
+  --brand-soft: rgba(11, 94, 215, 0.08);
+  --brand-soft-2: rgba(11, 94, 215, 0.12);
+  --brand-border: rgba(11, 94, 215, 0.18);
+  --brand-border-strong: rgba(11, 94, 215, 0.35);
+
   --accent: #f59e0b;
   --accent-dark: #d97706;
   --success: #16a34a;
@@ -27,14 +34,17 @@
   --turquoise: #05464d;
   --purple: #7c3aed;
 
+  --radius-sm: 12px;
   --radius: 16px;
   --radius-lg: 18px;
   --radius-xl: 22px;
-  --pill: 999px;
+  --radius-2xl: 26px;
+  --radius-round: 999px;
 
-  --shadow: 0 18px 40px rgba(2, 6, 23, 0.1);
   --shadow-soft: 0 10px 24px rgba(2, 6, 23, 0.08);
   --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 18px 40px rgba(2, 6, 23, 0.1);
+  --shadow-hover: 0 12px 24px rgba(2, 6, 23, 0.14);
 
   --max: 1120px;
 
@@ -103,7 +113,6 @@ table {
   scroll-margin-top: 110px;
 }
 
-/* prevent flex/grid overflow */
 .grid > *,
 .form > *,
 .footer-inner > *,
@@ -146,6 +155,116 @@ table {
   background-clip: initial !important;
   -webkit-text-fill-color: initial !important;
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+/* =========================
+   REUSABLE UTILITIES
+   ========================= */
+.surface,
+.card,
+.info-card,
+.club-card,
+.discount-card,
+.discount-card-wide,
+.discount-card-green,
+.price-card,
+.quicklinks,
+.club-summary-wrap,
+.page-card,
+.form-card,
+.page-mathclub .club-card,
+.club-section,
+.discounts-section {
+  min-width: 0;
+}
+
+.surface-soft {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-card,
+.card,
+.quicklinks,
+.club-summary-wrap,
+.page-mathclub .club-card {
+  background: var(--paper-soft-2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-panel,
+.page-card,
+.form-card {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-card);
+}
+
+.surface-pill,
+.badge,
+.prog-chip,
+.quick-jump a,
+.quick-link,
+.chip-link,
+.fee-chip,
+.kicker,
+.hero-pill,
+.hero-snap-pill,
+.club-badge,
+.best-value {
+  border-radius: var(--radius-round);
+}
+
+.interactive-lift,
+.btn,
+.nav a,
+.ql-btn,
+.quick-jump a,
+.quick-link,
+.chip-link,
+.lang-btn,
+.lang-option,
+.price-tool .seg button,
+.pricing-page .seg button,
+.price-tool .pricebox,
+.pricing-page .pricebox {
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    background-color 0.14s ease,
+    color 0.14s ease,
+    border-color 0.14s ease,
+    filter 0.14s ease;
+}
+
+.interactive-lift:hover,
+.btn:hover,
+.ql-btn:hover,
+.quick-jump a:hover,
+.quick-link:hover,
+.chip-link:hover,
+.lang-btn:hover,
+.lang-option:hover,
+.price-tool .seg button:hover,
+.pricing-page .seg button:hover,
+.price-tool .pricebox:hover,
+.pricing-page .pricebox:hover {
+  transform: translateY(-1px);
+}
+
+.focus-ring,
+.btn:focus-visible,
+.ql-btn:focus-visible,
+.quick-jump a:focus-visible,
+.quick-link:focus-visible,
+.chip-link:focus-visible,
+.lang-btn:focus-visible,
+.nav a:focus-visible,
+a.card:focus-visible {
+  outline: 3px solid rgba(11, 94, 215, 0.45);
+  outline-offset: 3px;
 }
 
 /* =========================
@@ -278,31 +397,25 @@ table {
   min-height: 74px;
   padding: 14px 34px;
   border: 2px solid rgba(15, 23, 42, 0.14);
-  border-radius: var(--pill);
-  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-round);
+  background: var(--paper-strong);
   color: var(--ink);
   font-size: 16px;
   font-weight: 1000;
   line-height: 1;
   white-space: nowrap;
   text-decoration: none;
-  transition:
-    transform 0.12s ease,
-    background 0.12s ease,
-    border-color 0.12s ease,
-    box-shadow 0.12s ease;
 }
 
 .nav a:hover {
-  background: rgba(11, 94, 215, 0.08);
-  border-color: rgba(11, 94, 215, 0.18);
-  transform: translateY(-1px);
+  background: var(--brand-soft);
+  border-color: var(--brand-border);
 }
 
 .nav a.active,
 .nav a[aria-current="page"] {
-  background: rgba(11, 94, 215, 0.18);
-  border-color: rgba(11, 94, 215, 0.35);
+  background: var(--brand-soft-2);
+  border-color: var(--brand-border-strong);
   box-shadow: 0 10px 18px rgba(11, 94, 215, 0.12);
 }
 
@@ -332,17 +445,10 @@ table {
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 10px 22px rgba(11, 94, 215, 0.22);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
 .lang-btn:hover {
-  transform: translateY(-1px);
   filter: brightness(1.02);
-}
-
-.lang-btn:focus-visible {
-  outline: 3px solid rgba(11, 94, 215, 0.35);
-  outline-offset: 3px;
 }
 
 .lang-btn-text,
@@ -376,7 +482,7 @@ table {
   width: 100%;
   padding: 12px 14px;
   border: 2px solid rgba(15, 23, 42, 0.14);
-  border-radius: var(--pill);
+  border-radius: var(--radius-round);
   background: #fff;
   color: #0b3b91;
   font-size: 16px;
@@ -384,7 +490,6 @@ table {
   line-height: 1;
   text-align: left;
   cursor: pointer;
-  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
 }
 
 .lang-option + .lang-option {
@@ -392,14 +497,13 @@ table {
 }
 
 .lang-option:hover {
-  background: rgba(11, 94, 215, 0.06);
+  background: var(--brand-soft);
   border-color: rgba(11, 94, 215, 0.22);
-  transform: translateY(-1px);
 }
 
 .lang-option.active {
-  background: rgba(11, 94, 215, 0.12);
-  border-color: rgba(11, 94, 215, 0.35);
+  background: var(--brand-soft-2);
+  border-color: var(--brand-border-strong);
   box-shadow: 0 8px 16px rgba(11, 94, 215, 0.08);
 }
 
@@ -413,33 +517,21 @@ table {
   gap: 10px;
   padding: 12px 16px;
   border: 1px solid transparent;
-  border-radius: var(--pill);
+  border-radius: var(--radius-round);
   background: transparent;
   text-decoration: none;
   font-weight: 900;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    transform 0.14s ease,
-    box-shadow 0.14s ease,
-    background-color 0.14s ease,
-    color 0.14s ease,
-    filter 0.14s ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(2, 6, 23, 0.14);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn:active {
   transform: translateY(0);
-}
-
-.btn:focus-visible {
-  outline: 3px solid rgba(11, 94, 215, 0.45);
-  outline-offset: 3px;
 }
 
 .btn-primary {
@@ -453,7 +545,7 @@ table {
 }
 
 .btn-secondary {
-  background: rgba(11, 94, 215, 0.08);
+  background: var(--brand-soft);
   color: var(--brand-dark);
   border-color: rgba(11, 94, 215, 0.25);
   box-shadow: none;
@@ -531,7 +623,7 @@ table {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-banner {
@@ -580,9 +672,8 @@ table {
 
 .hero-pill {
   padding: 9px 14px;
-  border: 1px solid rgba(11, 94, 215, 0.18);
-  border-radius: var(--pill);
-  background: rgba(11, 94, 215, 0.08);
+  border: 1px solid var(--brand-border);
+  background: var(--brand-soft);
   color: var(--brand-dark);
   font-size: 0.95rem;
   font-weight: 900;
@@ -590,7 +681,7 @@ table {
 
 .hero-snap {
   padding: 34px 30px;
-  border: 2px solid rgba(11, 94, 215, 0.18);
+  border: 2px solid var(--brand-border);
   border-radius: 34px;
   background: #fff;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
@@ -671,7 +762,6 @@ table {
 .hero-snap-pill {
   padding: 16px 26px;
   border: 4px solid rgba(245, 158, 11, 0.45);
-  border-radius: var(--pill);
   background: rgba(245, 158, 11, 0.1);
   color: rgba(122, 74, 0, 0.95);
   font-size: clamp(14px, 1.15vw, 22px);
@@ -722,17 +812,6 @@ table {
 /* =========================
    COMMON TEXT / BADGES / LINKS
    ========================= */
-.badge,
-.best-value,
-.prog-chip,
-.quick-jump a,
-.quick-link,
-.chip-link,
-.fee-chip,
-.kicker {
-  border-radius: var(--pill);
-}
-
 .badge {
   display: inline-flex;
   align-items: center;
@@ -825,27 +904,9 @@ table {
   gap: 14px;
 }
 
-.card,
-.info-card,
-.club-card,
-.discount-card,
-.discount-card-wide,
-.discount-card-green,
-.price-card,
-.page-mathclub .club-card,
-.club-section,
-.discounts-section,
-.page-card,
-.form-card {
-  min-width: 0;
-}
-
 .card {
   padding: 18px;
-  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: var(--shadow-soft);
 }
 
 .card h3 {
@@ -875,8 +936,6 @@ a.card:hover {
 }
 
 a.card:focus-visible {
-  outline: 3px solid rgba(11, 94, 215, 0.45);
-  outline-offset: 3px;
   border-radius: 16px;
 }
 
@@ -956,11 +1015,11 @@ h3 .ico {
 .form,
 .grid-2 {
   display: grid;
-  gap: 12px;
 }
 
 .form {
   grid-template-columns: 1fr 1fr;
+  gap: 12px;
   margin-top: 14px;
 }
 
@@ -1192,9 +1251,6 @@ textarea,
 .quicklinks {
   margin: 14px 0 18px;
   padding: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: var(--shadow-soft);
 }
 
 .quicklinks h2 {
@@ -1216,20 +1272,14 @@ textarea,
 .quick-link,
 .chip-link {
   text-decoration: none;
-  transition:
-    background-color 0.14s ease,
-    color 0.14s ease,
-    transform 0.14s ease,
-    box-shadow 0.14s ease,
-    border-color 0.14s ease;
 }
 
 .ql-btn {
   display: block;
   padding: 12px;
-  border: 1px solid rgba(11, 94, 215, 0.18);
+  border: 1px solid var(--brand-border);
   border-radius: 14px;
-  background: rgba(11, 94, 215, 0.06);
+  background: var(--brand-soft);
   color: var(--brand-dark);
   font-weight: 1000;
   text-align: center;
@@ -1243,7 +1293,6 @@ a.card .prog-chip:hover {
   background: var(--brand);
   color: #fff;
   border-color: rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
   box-shadow: 0 10px 18px rgba(2, 6, 23, 0.12);
 }
 
@@ -1251,14 +1300,6 @@ a.card .prog-chip:hover {
 .quick-jump a:active,
 .quick-link:active {
   transform: translateY(0);
-}
-
-.ql-btn:focus-visible,
-.quick-jump a:focus-visible,
-.quick-link:focus-visible,
-.chip-link:focus-visible {
-  outline: 3px solid rgba(11, 94, 215, 0.45);
-  outline-offset: 3px;
 }
 
 .quick-jump {
@@ -1288,7 +1329,6 @@ a.card .prog-chip:hover {
 .quick-link:hover {
   border-color: rgba(11, 94, 215, 0.35);
   background: rgba(255, 255, 255, 0.92);
-  transform: translateY(-1px);
   box-shadow: 0 14px 28px rgba(2, 6, 23, 0.1);
 }
 
@@ -1301,12 +1341,9 @@ a.card .prog-chip:hover {
 
 .tablet-only,
 .phone-only,
-.app-only {
-  display: none !important;
-}
-
+.app-only,
 .mobile-only {
-  display: none;
+  display: none !important;
 }
 
 body.is-ipad .desktop-only,
@@ -1320,8 +1357,6 @@ body.is-ipad .app-only {
 .club-summary-wrap {
   padding: 26px 22px;
   border: 1px solid rgba(11, 94, 215, 0.14);
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: var(--shadow-soft);
 }
 
 .club-badge {
@@ -1329,7 +1364,6 @@ body.is-ipad .app-only {
   margin: 0 auto 16px;
   padding: 10px 18px;
   border: 2px solid rgba(245, 158, 11, 0.45);
-  border-radius: var(--pill);
   background: rgba(245, 158, 11, 0.12);
   color: #6b4b00;
   font-size: 16px;
@@ -1389,13 +1423,6 @@ body.is-ipad .app-only {
 .page-enquiry,
 .page-register {
   padding: 18px 0 40px;
-}
-
-.form-card,
-.page-card {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: var(--shadow-card);
 }
 
 .form-card {
@@ -1629,10 +1656,7 @@ body.is-ipad .app-only {
 
 .page-mathclub .club-card {
   padding: 18px;
-  border: 1px solid var(--line);
   border-radius: calc(var(--radius) + 4px);
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: var(--shadow-soft);
 }
 
 .page-mathclub .club-grid {
@@ -1767,12 +1791,9 @@ body.is-ipad .app-only {
   border-radius: 18px;
 }
 
-.fees-table {
-  width: 100%;
-  min-width: 760px;
-}
-
+.fees-table,
 .pricing-table-wrap .fees-table {
+  width: 100%;
   min-width: 760px;
 }
 
@@ -1929,29 +1950,9 @@ body.is-ipad .app-only {
   font-size: 34px;
 }
 
-.pricing-page .pricing-jump-card,
-.pricing-jump-card {
+.pricing-jump-card,
+.pricing-page .pricing-jump-card {
   padding: 16px;
-}
-
-.pricing-page .chip-links,
-.chip-links,
-.fee-chips,
-.discounts-row,
-.btn-row,
-.price-tool .bar,
-.price-tool .badge-row,
-.price-tool .cells,
-.price-tool .seg,
-.pricing-page .bar,
-.pricing-page .badge-row,
-.pricing-page .cells,
-.pricing-page .seg,
-.price-grid,
-.triple-grid,
-.club-grid {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .chip-links,
@@ -2141,6 +2142,8 @@ body.is-ipad .app-only {
 
 .price-tool .bar,
 .pricing-page .bar {
+  display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
   margin: 14px 0 18px;
   gap: 12px;
@@ -2148,6 +2151,8 @@ body.is-ipad .app-only {
 
 .price-tool .seg,
 .pricing-page .seg {
+  display: flex;
+  gap: 6px;
   align-items: center;
   padding: 6px;
   border: 1px solid var(--line);
@@ -2168,12 +2173,6 @@ body.is-ipad .app-only {
   font-weight: 900;
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease, outline 0.12s ease;
-}
-
-.price-tool .seg button:hover,
-.pricing-page .seg button:hover {
-  transform: translateY(-1px);
 }
 
 .price-tool .seg button.active,
@@ -2209,7 +2208,7 @@ body.is-ipad .app-only {
   gap: 8px;
   padding: 6px 10px;
   border: 1px solid rgba(2, 8, 23, 0.1);
-  border-radius: var(--pill);
+  border-radius: var(--radius-round);
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(14, 165, 233, 0.1));
   color: #0b1a2b;
   font-size: 13px;
@@ -2355,12 +2354,10 @@ body.is-ipad .app-only {
   border-radius: 16px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72));
   box-shadow: 0 8px 18px rgba(2, 8, 23, 0.08);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .price-tool .pricebox:hover,
 .pricing-page .pricebox:hover {
-  transform: translateY(-2px);
   box-shadow: 0 14px 26px rgba(2, 8, 23, 0.12);
 }
 
@@ -2381,7 +2378,7 @@ body.is-ipad .app-only {
   margin-top: 8px;
   padding: 6px 10px;
   border: 1px solid rgba(2, 8, 23, 0.1);
-  border-radius: var(--pill);
+  border-radius: var(--radius-round);
   font-size: 12px;
   font-weight: 1000;
   line-height: 1.15;
@@ -2891,4 +2888,51 @@ body.is-ipad .app-only {
   .app-only {
     display: inline-flex !important;
   }
+}
+/* ============ PHILOSOPHY PAGE ============ */
+.philosophy-list{
+  line-height: 1.85;
+}
+
+.teach-grid{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 10px;
+}
+@media (max-width: 1050px){
+  .teach-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px){
+  .teach-grid{ grid-template-columns: 1fr; }
+}
+
+.philosophy-note{
+  background: rgba(255,255,255,.72);
+  border: 2px solid rgba(0,0,0,.10);
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-weight: 750;
+  line-height: 1.7;
+}
+
+.philosophy-quicklinks-section{
+  padding-top: 0;
+}
+
+.ql-btn.is-active{
+  background: rgba(11,94,215,.18);
+  border-color: rgba(11,94,215,.35);
+  box-shadow: 0 10px 18px rgba(11,94,215,.12);
+  color: var(--brand2);
+}
+
+@keyframes mmmFlash {
+  0%   { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+  35%  { box-shadow: 0 0 0 6px rgba(11,94,215,.18); border-color: rgba(11,94,215,.55); }
+  100% { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+}
+
+.anchor-flash.card{
+  animation: mmmFlash 1.15s ease;
 }
