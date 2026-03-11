@@ -6,281 +6,6 @@
     } else {
       fn();
     }
-        // =========================
-    // Pricing page
-    // =========================
-    const priceBody = document.getElementById("priceBody");
-
-    if (priceBody) {
-      const rows = [
-        { icon:"👩‍🏫", program:"One-to-One",
-          p30:{ online:55, inperson:60 }, p60:{ online:100, inperson:110 } },
-        { icon:"👩‍👦", program:"2 students",
-          p30:{ online:45, inperson:50 }, p60:{ online:80,  inperson:90  } },
-        { icon:"👨‍👩‍👧", program:"3 students",
-          p30:{ online:35, inperson:40 }, p60:{ online:60,  inperson:70  } },
-        { icon:"👨‍👩‍👧‍👦", program:"4 students",
-          p30:{ online:30, inperson:35 }, p60:{ online:50,  inperson:60  } },
-        { icon:"👨‍👩‍👧‍👦🧑", program:"5 students",
-          p30:{ online:25, inperson:30 }, p60:{ online:40,  inperson:50  }, min60:true },
-        { icon:"👨‍👩‍👧‍👦🧑+", program:"5+ students",
-          p30:{ online:20, inperson:25 }, p60:{ online:35,  inperson:45  }, min60:true },
-      ];
-
-      const adjustments = {
-        primary: {
-          add30:-5, add60:-10,
-          badge:"Primary adjustment",
-          rule:"Primary Maths: –$5 (30 min) and –$10 (60 min) per student.",
-          extra:"Tip: If your child needs enrichment or extension, ask about a tailored plan."
-        },
-        mid: {
-          add30:0, add60:0,
-          badge:"Standard pricing",
-          rule:"Years 7–10 Maths: standard pricing (no adjustment).",
-          extra:"Tip: 60-minute sessions allow more practice + feedback."
-        },
-        vce: { extra:"For VCE Maths, 60-minute sessions are strongly recommended." }
-      };
-
-      const vceSubjects = {
-        general:    { add30:+10, add60:+15, label:"VCE General Maths: +$10 (30) and +$15 (60) per student." },
-        methods:    { add30:+15, add60:+20, label:"VCE Maths Methods: +$15 (30) and +$20 (60) per student." },
-        specialist: { add30:+20, add60:+25, label:"VCE Specialist Maths: +$20 (30) and +$25 (60) per student." },
-      };
-
-      const tracks = {
-        standard:  { add30: 0,  add60: 0,  name:"Standard",
-                     label:"Standard tutoring: +$0.", min60:false,
-                     extra:"Focus: school learning, homework support, confidence building." },
-
-        extension: { add30:+5,  add60:+10, name:"Extension",
-                     label:"Extension: +$5 (30) and +$10 (60) per student.", min60:false,
-                     extra:"Focus: enrichment, deeper understanding, higher-level questions." },
-
-        selective: { add30:+10, add60:+20, name:"Selective tests",
-                     label:"Selective tests: +$10 (30) and +$20 (60) per student.", min60:true,
-                     extra:"Focus: test technique, speed, reasoning, practice papers." },
-
-        amc:       { add30:+15, add60:+25, name:"AMC/AMO",
-                     label:"AMC/AMO: +$15 (30) and +$25 (60) per student.", min60:true,
-                     extra:"Focus: competition problem solving, strategies, advanced reasoning." },
-
-        amointensive: { add30:+20, add60:+30, name:"AMO Intensive",
-                        label:"AMO Intensive: +$20 (30) and +$30 (60) per student.", min60:true,
-                        extra:"Focus: advanced Olympiad training, proofs, and high-difficulty problem sets."},
-      };
-
-      let currentLevel = "primary";
-      let currentVce = "general";
-      let currentTrack = "standard";
-
-      const money = n => `$${Math.max(0, n)}`;
-
-      function yearAdj(){
-        if (currentLevel === "vce") return vceSubjects[currentVce];
-        return adjustments[currentLevel];
-      }
-
-      function totalAdd30(){
-        const y = yearAdj();
-        const t = tracks[currentTrack];
-        return (y.add30 || 0) + (t.add30 || 0);
-      }
-
-      function totalAdd60(){
-        const y = yearAdj();
-        const t = tracks[currentTrack];
-        return (y.add60 || 0) + (t.add60 || 0);
-      }
-
-      function priceCells(online, inperson){
-        return `
-          <div class="cells">
-            <div class="pricebox">
-              <div class="price">${money(online)}</div>
-              <div class="tag online">🌐 Online</div>
-            </div>
-            <div class="pricebox">
-              <div class="price">${money(inperson)}</div>
-              <div class="tag inperson">📍 In-person</div>
-            </div>
-          </div>
-        `;
-      }
-
-      function selectionLabel(){
-        const yearLabel =
-          currentLevel === "primary" ? "Primary" :
-          currentLevel === "mid" ? "Years 7–10" :
-          `VCE ${currentVce.charAt(0).toUpperCase() + currentVce.slice(1)}`;
-
-        return `${yearLabel} • ${tracks[currentTrack].name}`;
-      }
-
-      function updateFeesAtGlance(){
-        const add30 = totalAdd30();
-        const add60 = totalAdd60();
-
-        const oneToOne = rows[0];
-        const force60_1to1 = !!oneToOne.min60 || tracks[currentTrack].min60;
-
-        const online60 = oneToOne.p60.online + add60;
-        const inperson60 = oneToOne.p60.inperson + add60;
-
-        const glancePriceOnline = document.getElementById("glance-price-online");
-        const glancePriceInperson = document.getElementById("glance-price-inperson");
-        const glanceBadgeOnline = document.getElementById("glance-badge-online");
-        const glanceBadgeInperson = document.getElementById("glance-badge-inperson");
-        const glanceBadge30 = document.getElementById("glance-badge-30");
-        const glance30Price  = document.getElementById("glance-price-30");
-        const glance30Note   = document.getElementById("glance-30-note");
-        const glance30Helper = document.getElementById("glance-30-helper");
-        const glanceBadge5Plus = document.getElementById("glance-badge-5plus");
-        const glancePrice5Plus = document.getElementById("glance-price-5plus");
-        const glancePer5Plus = document.getElementById("glance-per-5plus");
-
-        if (!glancePriceOnline) return;
-
-        glancePriceOnline.textContent = `$${online60}`;
-        glancePriceInperson.textContent = `$${inperson60}`;
-
-        const label = selectionLabel();
-        glanceBadgeOnline.textContent = `1-to-1 • 60 min • ${label}`;
-        glanceBadgeInperson.textContent = `1-to-1 • 60 min • ${label}`;
-        glanceBadge30.textContent = `1-to-1 • 30 min • ${label}`;
-
-        if (force60_1to1){
-          glance30Price.textContent = "60-min required";
-          glance30Note.textContent = "This selection requires 60-minute sessions for quality/results.";
-          glance30Helper.innerHTML = `<strong>Why?</strong> These programs need time for strategy + deep practice + feedback.`;
-        } else {
-          const online30 = oneToOne.p30.online + add30;
-          const inperson30 = oneToOne.p30.inperson + add30;
-          glance30Price.textContent = `$${online30} / $${inperson30}`;
-          glance30Note.textContent = "Online / In-person (per student)";
-          glance30Helper.textContent = "Tip: 60 minutes usually gives better progress (more time for practice + feedback).";
-        }
-
-        const fivePlus = rows[5];
-        const online60_5p = fivePlus.p60.online + add60;
-        const inperson60_5p = fivePlus.p60.inperson + add60;
-
-        glanceBadge5Plus.textContent = `5+ students • 60 min • ${label}`;
-        glancePrice5Plus.textContent = `$${online60_5p} / $${inperson60_5p}`;
-        glancePer5Plus.textContent = "per 60 minutes (online / in-person • per student)";
-      }
-
-      function renderPricing(){
-        const badgeYear = document.getElementById("badgeYear");
-        const badgeTrack = document.getElementById("badgeTrack");
-        const ruleLine = document.getElementById("ruleLine");
-        const extraLine = document.getElementById("extraLine");
-        const vceBox = document.getElementById("vceBox");
-
-        const y = yearAdj();
-        const t = tracks[currentTrack];
-
-        if (currentLevel === "vce") {
-          vceBox.style.display = "block";
-          badgeYear.textContent = "VCE subject";
-        } else {
-          vceBox.style.display = "none";
-          badgeYear.textContent = adjustments[currentLevel].badge;
-        }
-
-        badgeTrack.textContent = t.name;
-
-        const yearText = (currentLevel === "vce") ? y.label : adjustments[currentLevel].rule;
-        ruleLine.innerHTML = `${yearText}<br>${t.label}`;
-        extraLine.textContent =
-          (currentLevel === "vce" ? adjustments.vce.extra : adjustments[currentLevel].extra) +
-          " " + t.extra;
-
-        const add30 = totalAdd30();
-        const add60 = totalAdd60();
-
-        priceBody.innerHTML = "";
-
-        rows.forEach((r) => {
-          const tr = document.createElement("tr");
-
-          const tdIcon = document.createElement("td");
-          tdIcon.className = "icon";
-          tdIcon.textContent = r.icon;
-
-          const tdProg = document.createElement("td");
-          tdProg.innerHTML = `<div class="program">${r.program}</div>`;
-
-          const td30 = document.createElement("td");
-          const force60 = !!r.min60 || tracks[currentTrack].min60;
-
-          if (force60) {
-            td30.innerHTML = `
-              <div class="locked">
-                <div class="label">60-minute minimum</div>
-                <div class="small">
-                  ${r.min60
-                    ? "For 5+ students we only offer 60-minute sessions to keep lesson quality high."
-                    : "For this program type, 60-minute sessions are required for best results."}
-                </div>
-              </div>
-            `;
-          } else {
-            td30.innerHTML = priceCells(r.p30.online + add30, r.p30.inperson + add30);
-          }
-
-          const td60 = document.createElement("td");
-          td60.innerHTML = priceCells(r.p60.online + add60, r.p60.inperson + add60);
-
-          tr.appendChild(tdIcon);
-          tr.appendChild(tdProg);
-          tr.appendChild(td30);
-          tr.appendChild(td60);
-          priceBody.appendChild(tr);
-        });
-
-        updateFeesAtGlance();
-      }
-
-      document.querySelectorAll("[data-level]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          currentLevel = btn.dataset.level;
-          document.querySelectorAll("[data-level]").forEach(b => {
-            const active = b.dataset.level === currentLevel;
-            b.classList.toggle("active", active);
-            b.setAttribute("aria-selected", active ? "true" : "false");
-          });
-          renderPricing();
-        });
-      });
-
-      document.querySelectorAll("[data-vce]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          currentVce = btn.dataset.vce;
-          document.querySelectorAll("[data-vce]").forEach(b => {
-            const active = b.dataset.vce === currentVce;
-            b.classList.toggle("active", active);
-            b.setAttribute("aria-selected", active ? "true" : "false");
-          });
-          renderPricing();
-        });
-      });
-
-      document.querySelectorAll("[data-track]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          currentTrack = btn.dataset.track;
-          document.querySelectorAll("[data-track]").forEach(b => {
-            const active = b.dataset.track === currentTrack;
-            b.classList.toggle("active", active);
-            b.setAttribute("aria-selected", active ? "true" : "false");
-          });
-          renderPricing();
-        });
-      });
-
-      renderPricing();
-    }
   }
 
   function normalizeToFileKey(inputPath) {
@@ -303,6 +28,21 @@
     // =========================
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // =========================
+    // iPad detection
+    // =========================
+    try {
+      const isIpad =
+        /iPad/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+      if (isIpad) {
+        document.body.classList.add("is-ipad");
+      }
+    } catch (e) {
+      // do nothing
+    }
 
     // =========================
     // Active nav highlighting
@@ -462,7 +202,9 @@
     const registerIframe = document.querySelector('iframe[name="registerSubmitFrame"]');
     const registerModal = document.getElementById("registerThankYouModal");
     const registerOkBtn = document.getElementById("registerThankYouOkBtn");
-    const registerCheckboxGroup = Array.from(document.querySelectorAll('input[name="register_for"]'));
+    const registerCheckboxGroup = Array.from(
+      document.querySelectorAll('input[name="register_for"]')
+    );
     const registerError = document.getElementById("registerError");
 
     if (registerForm && registerIframe && registerModal) {
@@ -800,20 +542,362 @@
       updateClubUI();
       updateCompetitionLocation();
     }
+
+    // =========================
+    // Pricing page
+    // =========================
+    const priceBody = document.getElementById("priceBody");
+
+    if (priceBody) {
+      const rows = [
+        {
+          icon: "👩‍🏫",
+          program: "One-to-One",
+          p30: { online: 55, inperson: 60 },
+          p60: { online: 100, inperson: 110 }
+        },
+        {
+          icon: "👩‍👦",
+          program: "2 students",
+          p30: { online: 45, inperson: 50 },
+          p60: { online: 80, inperson: 90 }
+        },
+        {
+          icon: "👨‍👩‍👧",
+          program: "3 students",
+          p30: { online: 35, inperson: 40 },
+          p60: { online: 60, inperson: 70 }
+        },
+        {
+          icon: "👨‍👩‍👧‍👦",
+          program: "4 students",
+          p30: { online: 30, inperson: 35 },
+          p60: { online: 50, inperson: 60 }
+        },
+        {
+          icon: "👨‍👩‍👧‍👦🧑",
+          program: "5 students",
+          p30: { online: 25, inperson: 30 },
+          p60: { online: 40, inperson: 50 },
+          min60: true
+        },
+        {
+          icon: "👨‍👩‍👧‍👦🧑+",
+          program: "5+ students",
+          p30: { online: 20, inperson: 25 },
+          p60: { online: 35, inperson: 45 },
+          min60: true
+        }
+      ];
+
+      const adjustments = {
+        primary: {
+          add30: -5,
+          add60: -10,
+          badge: "Primary adjustment",
+          rule: "Primary Maths: –$5 (30 min) and –$10 (60 min) per student.",
+          extra: "Tip: If your child needs enrichment or extension, ask about a tailored plan."
+        },
+        mid: {
+          add30: 0,
+          add60: 0,
+          badge: "Standard pricing",
+          rule: "Years 7–10 Maths: standard pricing (no adjustment).",
+          extra: "Tip: 60-minute sessions allow more practice + feedback."
+        },
+        vce: {
+          extra: "For VCE Maths, 60-minute sessions are strongly recommended."
+        }
+      };
+
+      const vceSubjects = {
+        general: {
+          add30: +10,
+          add60: +15,
+          label: "VCE General Maths: +$10 (30) and +$15 (60) per student."
+        },
+        methods: {
+          add30: +15,
+          add60: +20,
+          label: "VCE Maths Methods: +$15 (30) and +$20 (60) per student."
+        },
+        specialist: {
+          add30: +20,
+          add60: +25,
+          label: "VCE Specialist Maths: +$20 (30) and +$25 (60) per student."
+        }
+      };
+
+      const tracks = {
+        standard: {
+          add30: 0,
+          add60: 0,
+          name: "Standard",
+          label: "Standard tutoring: +$0.",
+          min60: false,
+          extra: "Focus: school learning, homework support, confidence building."
+        },
+        extension: {
+          add30: +5,
+          add60: +10,
+          name: "Extension",
+          label: "Extension: +$5 (30) and +$10 (60) per student.",
+          min60: false,
+          extra: "Focus: enrichment, deeper understanding, higher-level questions."
+        },
+        selective: {
+          add30: +10,
+          add60: +20,
+          name: "Selective tests",
+          label: "Selective tests: +$10 (30) and +$20 (60) per student.",
+          min60: true,
+          extra: "Focus: test technique, speed, reasoning, practice papers."
+        },
+        amc: {
+          add30: +15,
+          add60: +25,
+          name: "AMC/AMO",
+          label: "AMC/AMO: +$15 (30) and +$25 (60) per student.",
+          min60: true,
+          extra: "Focus: competition problem solving, strategies, advanced reasoning."
+        },
+        amointensive: {
+          add30: +20,
+          add60: +30,
+          name: "AMO Intensive",
+          label: "AMO Intensive: +$20 (30) and +$30 (60) per student.",
+          min60: true,
+          extra: "Focus: advanced Olympiad training, proofs, and high-difficulty problem sets."
+        }
+      };
+
+      let currentLevel = "primary";
+      let currentVce = "general";
+      let currentTrack = "standard";
+
+      const money = (n) => `$${Math.max(0, n)}`;
+
+      function yearAdj() {
+        if (currentLevel === "vce") return vceSubjects[currentVce];
+        return adjustments[currentLevel];
+      }
+
+      function totalAdd30() {
+        const y = yearAdj();
+        const t = tracks[currentTrack];
+        return (y.add30 || 0) + (t.add30 || 0);
+      }
+
+      function totalAdd60() {
+        const y = yearAdj();
+        const t = tracks[currentTrack];
+        return (y.add60 || 0) + (t.add60 || 0);
+      }
+
+      function priceCells(online, inperson) {
+        return `
+          <div class="cells">
+            <div class="pricebox">
+              <div class="price">${money(online)}</div>
+              <div class="tag online">🌐 Online</div>
+            </div>
+            <div class="pricebox">
+              <div class="price">${money(inperson)}</div>
+              <div class="tag inperson">📍 In-person</div>
+            </div>
+          </div>
+        `;
+      }
+
+      function selectionLabel() {
+        const yearLabel =
+          currentLevel === "primary"
+            ? "Primary"
+            : currentLevel === "mid"
+              ? "Years 7–10"
+              : `VCE ${currentVce.charAt(0).toUpperCase() + currentVce.slice(1)}`;
+
+        return `${yearLabel} • ${tracks[currentTrack].name}`;
+      }
+
+      function updateFeesAtGlance() {
+        const add30 = totalAdd30();
+        const add60 = totalAdd60();
+
+        const oneToOne = rows[0];
+        const force60_1to1 = !!oneToOne.min60 || tracks[currentTrack].min60;
+
+        const online60 = oneToOne.p60.online + add60;
+        const inperson60 = oneToOne.p60.inperson + add60;
+
+        const glancePriceOnline = document.getElementById("glance-price-online");
+        const glancePriceInperson = document.getElementById("glance-price-inperson");
+        const glanceBadgeOnline = document.getElementById("glance-badge-online");
+        const glanceBadgeInperson = document.getElementById("glance-badge-inperson");
+        const glanceBadge30 = document.getElementById("glance-badge-30");
+        const glance30Price = document.getElementById("glance-price-30");
+        const glance30Note = document.getElementById("glance-30-note");
+        const glance30Helper = document.getElementById("glance-30-helper");
+        const glanceBadge5Plus = document.getElementById("glance-badge-5plus");
+        const glancePrice5Plus = document.getElementById("glance-price-5plus");
+        const glancePer5Plus = document.getElementById("glance-per-5plus");
+
+        if (!glancePriceOnline) return;
+
+        glancePriceOnline.textContent = `$${online60}`;
+        glancePriceInperson.textContent = `$${inperson60}`;
+
+        const label = selectionLabel();
+        if (glanceBadgeOnline) glanceBadgeOnline.textContent = `1-to-1 • 60 min • ${label}`;
+        if (glanceBadgeInperson) glanceBadgeInperson.textContent = `1-to-1 • 60 min • ${label}`;
+        if (glanceBadge30) glanceBadge30.textContent = `1-to-1 • 30 min • ${label}`;
+
+        if (glance30Price && glance30Note && glance30Helper) {
+          if (force60_1to1) {
+            glance30Price.textContent = "60-min required";
+            glance30Note.textContent =
+              "This selection requires 60-minute sessions for quality/results.";
+            glance30Helper.innerHTML =
+              "<strong>Why?</strong> These programs need time for strategy + deep practice + feedback.";
+          } else {
+            const online30 = oneToOne.p30.online + add30;
+            const inperson30 = oneToOne.p30.inperson + add30;
+            glance30Price.textContent = `$${online30} / $${inperson30}`;
+            glance30Note.textContent = "Online / In-person (per student)";
+            glance30Helper.textContent =
+              "Tip: 60 minutes usually gives better progress (more time for practice + feedback).";
+          }
+        }
+
+        const fivePlus = rows[5];
+        const online60_5p = fivePlus.p60.online + add60;
+        const inperson60_5p = fivePlus.p60.inperson + add60;
+
+        if (glanceBadge5Plus) glanceBadge5Plus.textContent = `5+ students • 60 min • ${label}`;
+        if (glancePrice5Plus) glancePrice5Plus.textContent = `$${online60_5p} / $${inperson60_5p}`;
+        if (glancePer5Plus) {
+          glancePer5Plus.textContent = "per 60 minutes (online / in-person • per student)";
+        }
+      }
+
+      function renderPricing() {
+        const badgeYear = document.getElementById("badgeYear");
+        const badgeTrack = document.getElementById("badgeTrack");
+        const ruleLine = document.getElementById("ruleLine");
+        const extraLine = document.getElementById("extraLine");
+        const vceBox = document.getElementById("vceBox");
+
+        const y = yearAdj();
+        const t = tracks[currentTrack];
+
+        if (currentLevel === "vce") {
+          if (vceBox) vceBox.style.display = "block";
+          if (badgeYear) badgeYear.textContent = "VCE subject";
+        } else {
+          if (vceBox) vceBox.style.display = "none";
+          if (badgeYear) badgeYear.textContent = adjustments[currentLevel].badge;
+        }
+
+        if (badgeTrack) badgeTrack.textContent = t.name;
+
+        const yearText =
+          currentLevel === "vce" ? y.label : adjustments[currentLevel].rule;
+
+        if (ruleLine) ruleLine.innerHTML = `${yearText}<br>${t.label}`;
+        if (extraLine) {
+          extraLine.textContent =
+            (currentLevel === "vce"
+              ? adjustments.vce.extra
+              : adjustments[currentLevel].extra) +
+            " " +
+            t.extra;
+        }
+
+        const add30 = totalAdd30();
+        const add60 = totalAdd60();
+
+        priceBody.innerHTML = "";
+
+        rows.forEach((r) => {
+          const tr = document.createElement("tr");
+
+          const tdIcon = document.createElement("td");
+          tdIcon.className = "icon";
+          tdIcon.textContent = r.icon;
+
+          const tdProg = document.createElement("td");
+          tdProg.innerHTML = `<div class="program">${r.program}</div>`;
+
+          const td30 = document.createElement("td");
+          const force60 = !!r.min60 || tracks[currentTrack].min60;
+
+          if (force60) {
+            td30.innerHTML = `
+              <div class="locked">
+                <div class="label">60-minute minimum</div>
+                <div class="small">
+                  ${
+                    r.min60
+                      ? "For 5+ students we only offer 60-minute sessions to keep lesson quality high."
+                      : "For this program type, 60-minute sessions are required for best results."
+                  }
+                </div>
+              </div>
+            `;
+          } else {
+            td30.innerHTML = priceCells(r.p30.online + add30, r.p30.inperson + add30);
+          }
+
+          const td60 = document.createElement("td");
+          td60.innerHTML = priceCells(r.p60.online + add60, r.p60.inperson + add60);
+
+          tr.appendChild(tdIcon);
+          tr.appendChild(tdProg);
+          tr.appendChild(td30);
+          tr.appendChild(td60);
+          priceBody.appendChild(tr);
+        });
+
+        updateFeesAtGlance();
+      }
+
+      document.querySelectorAll("[data-level]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentLevel = btn.dataset.level;
+          document.querySelectorAll("[data-level]").forEach((b) => {
+            const active = b.dataset.level === currentLevel;
+            b.classList.toggle("active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          renderPricing();
+        });
+      });
+
+      document.querySelectorAll("[data-vce]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentVce = btn.dataset.vce;
+          document.querySelectorAll("[data-vce]").forEach((b) => {
+            const active = b.dataset.vce === currentVce;
+            b.classList.toggle("active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          renderPricing();
+        });
+      });
+
+      document.querySelectorAll("[data-track]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentTrack = btn.dataset.track;
+          document.querySelectorAll("[data-track]").forEach((b) => {
+            const active = b.dataset.track === currentTrack;
+            b.classList.toggle("active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          renderPricing();
+        });
+      });
+
+      renderPricing();
+    }
   });
 })();
-
-    // =========================
-    // iPad detection for contact page buttons
-    // =========================
-    try {
-      const isIpad =
-        /iPad/.test(navigator.userAgent) ||
-        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-      if (isIpad) {
-        document.body.classList.add("is-ipad");
-      }
-    } catch (e) {
-      // do nothing
-    }
