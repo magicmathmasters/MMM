@@ -154,6 +154,66 @@
     }
 
     // =========================
+    // Philosophy page quick links
+    // =========================
+    const philosophyJumpButtons = Array.from(
+      document.querySelectorAll(".ql-btn[data-jump]")
+    );
+
+    if (
+      philosophyJumpButtons.length &&
+      (document.getElementById("our-philosophy") ||
+        document.getElementById("how-we-teach"))
+    ) {
+      function setPhilosophyActive(id) {
+        philosophyJumpButtons.forEach((btn) => btn.classList.remove("is-active"));
+        const match = philosophyJumpButtons.find(
+          (btn) => btn.getAttribute("data-jump") === id
+        );
+        if (match) match.classList.add("is-active");
+      }
+
+      function flashPhilosophyCard(section) {
+        if (!section) return;
+        const card = section.querySelector(".card");
+        if (!card) return;
+
+        card.classList.remove("anchor-flash");
+        void card.offsetWidth;
+        card.classList.add("anchor-flash");
+
+        window.setTimeout(() => {
+          card.classList.remove("anchor-flash");
+        }, 1300);
+      }
+
+      function goToPhilosophySection(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        history.replaceState(null, "", "#" + id);
+        setPhilosophyActive(id);
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        window.setTimeout(() => {
+          flashPhilosophyCard(el);
+        }, 220);
+      }
+
+      philosophyJumpButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          goToPhilosophySection(btn.getAttribute("data-jump"));
+        });
+      });
+
+      const initialHash = (window.location.hash || "").replace("#", "");
+      if (initialHash) {
+        setPhilosophyActive(initialHash);
+      }
+    }
+
+    // =========================
     // Enquiry form
     // =========================
     const enquiryForm = document.getElementById("enquiryForm");
@@ -549,7 +609,7 @@
     const priceBody = document.getElementById("priceBody");
 
     if (priceBody) {
-      const rows = [
+      const pricingRows = [
         {
           icon: "👩‍🏫",
           program: "One-to-One",
@@ -724,7 +784,7 @@
         const add30 = totalAdd30();
         const add60 = totalAdd60();
 
-        const oneToOne = rows[0];
+        const oneToOne = pricingRows[0];
         const force60_1to1 = !!oneToOne.min60 || tracks[currentTrack].min60;
 
         const online60 = oneToOne.p60.online + add60;
@@ -745,7 +805,7 @@
         if (!glancePriceOnline) return;
 
         glancePriceOnline.textContent = `$${online60}`;
-        glancePriceInperson.textContent = `$${inperson60}`;
+        if (glancePriceInperson) glancePriceInperson.textContent = `$${inperson60}`;
 
         const label = selectionLabel();
         if (glanceBadgeOnline) glanceBadgeOnline.textContent = `1-to-1 • 60 min • ${label}`;
@@ -769,7 +829,7 @@
           }
         }
 
-        const fivePlus = rows[5];
+        const fivePlus = pricingRows[5];
         const online60_5p = fivePlus.p60.online + add60;
         const inperson60_5p = fivePlus.p60.inperson + add60;
 
@@ -818,7 +878,7 @@
 
         priceBody.innerHTML = "";
 
-        rows.forEach((r) => {
+        pricingRows.forEach((r) => {
           const tr = document.createElement("tr");
 
           const tdIcon = document.createElement("td");
